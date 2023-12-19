@@ -15,6 +15,7 @@
   
 #include <SoftwareSerial.h>
 #include "VoiceRecognitionV3.h"
+#include <Servo.h>
 
 /**        
   Connection
@@ -28,7 +29,8 @@ VR myVR(2, 3);
 uint8_t records[7];
 uint8_t buf[64];
 
-int led = 13;
+int servoPin = 13; // Change the name of the pin variable
+Servo servo;       // Use Servo type for the servo motor
 
 #define onRecord (0)
 #define offRecord (1)
@@ -112,7 +114,8 @@ void setup()
   Serial.begin(115200);
   Serial.println("Elechouse Voice Recognition V3 Module\r\nControl LED sample");
   
-  pinMode(led, OUTPUT);
+  pinMode(servoPin, OUTPUT); // Use the servoPin for pin initialization
+  servo.attach(servoPin);    // Attach the servo motor to the correct pin
     
   if(myVR.clear() == 0){
     Serial.println("Recognizer cleared.");
@@ -167,14 +170,12 @@ void loop()
     {
       if (buf[1] == onRecord && !jarvisSaid)
       {
-        digitalWrite(led, HIGH);
+        //Move servo to turn on
+        servo.write(120);
+        delay(1000);
+        servo.write(0);
         currentState = IDLE_STATE;
         jarvisSaid = true;
-      }
-      else if (buf[1] == offRecord)
-      {
-        digitalWrite(led, LOW);
-        currentState = IDLE_STATE;
       }
       printVR(buf);
     }
