@@ -7,22 +7,22 @@
 #include <AFMotor.h>
 #include <Servo.h>
 
-#define FAST_SPEED  250     //both sides of the motor speed
-#define SPEED  120     //both sides of the motor speed
-#define TURN_SPEED  200     //both sides of the motor speed
-#define BACK_SPEED1  255     //back speed
-#define BACK_SPEED2  90     //back speed
+#define FAST_SPEED  250
+#define SPEED  120
+#define TURN_SPEED  200
+#define BACK_SPEED1  255
+#define BACK_SPEED2  90
 
-#define speedPinR 3   // RIGHT PWM pin connect MODEL-X ENA
-#define RightDirectPin1  12    //  Right Motor direction pin 1 to MODEL-X IN1 
-#define RightDirectPin2  11    // Right Motor direction pin 2 to MODEL-X IN2
-#define speedPinL 6        //  Left PWM pin connect MODEL-X ENB
-#define LeftDirectPin1  7    // Left Motor direction pin 1 to MODEL-X IN3
-#define LeftDirectPin2  8   ///Left Motor direction pin 1 to MODEL-X IN4
-#define LPT 2 // scan loop coumter
+#define speedPinR 3
+#define RightDirectPin1  12
+#define RightDirectPin2  11
+#define speedPinL 6
+#define LeftDirectPin1  7
+#define LeftDirectPin2  8
+#define LPT 2
 
-#define VRX_PIN 15  // Arduino pin connected to VRX pin
-#define VRY_PIN 19  // Arduino pin connected to VRY pin
+#define VRX_PIN 15
+#define VRY_PIN 19
 
 #define xHigh 14
 #define xLow -10
@@ -34,7 +34,7 @@ int yValue = 0;
 
 
 void setup() {
-  Serial.begin(9600);  // set up Serial library at 9600 bps
+  Serial.begin(9600);
 
   pinMode(VRX_PIN, INPUT);
   pinMode(VRY_PIN, INPUT);
