@@ -1,5 +1,9 @@
 //WIRED
 
+#define MOTOR12_64KHZ _BV(CS00)  // no prescale
+#define STEPPER1_PWM_RATE MOTOR12_64KHZ
+
+
 #include <AlignedJoy.h>
 
 #include <Keyboard.h>
