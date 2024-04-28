@@ -10,7 +10,7 @@ def div(x, y):
 
 
 def checkOp(op, last, next):
-    if last != "x" and next != "x":
+    if "x" not in last and "x" not in next:
         if op == "+":
             return add(int(last), int(next))
         elif op == "-":
@@ -32,11 +32,11 @@ def multipleOps(terms):
         result = checkOp(terms[i], terms[i-1], terms[i+1])
         if result is not None:
             if new is None:
-                new = result
+                new = str(result)  # Convert result to string
             else:
+                new = str(new)  # Convert new to string
                 new = checkOp(terms[i], new, terms[i+1])  # Chain operations
     return new
-
 
 def solve(equation):
     leftSide, rightSide = equation.split("=")
@@ -87,4 +87,4 @@ def solve(equation):
     end = add (left, right)
     return "x = " + str(end)
 
-print(solve("2x + 5 + 2 + 3 - 2 = 2 * 5"))
+print(solve("x + 5 + 2 + 31 - 2 = 2 * 5"))
