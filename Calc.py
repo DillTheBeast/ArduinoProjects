@@ -49,12 +49,10 @@ def solve(equation):
     rightOpCount = sum(1 for term in rightTerms if term in ['+', '-', '*', '/'])
     
     #Finding if x is in left or right side
-    xLeft = False
-    if("x" in leftTerms):
-        xLeft = True
+    xLeft = any("x" in term for term in leftTerms)
+    if xLeft:
         leftOpCount -= 1
     else:
-        xLeft = False
         rightOpCount -= 1
         
     if(leftOpCount <= 1):
@@ -87,4 +85,4 @@ def solve(equation):
     end = add (left, right)
     return "x = " + str(end)
 
-print(solve("x + 5 + 2 + 31 - 2 = 2 * 5"))
+print(solve("3x + 5 + 2 + 31 - 2 = 2 * 5"))
