@@ -21,21 +21,39 @@ def checkOp(op, last, next):
             return div(int(last), int(next))
         
 def oneOp(terms):
-    for i in range(1, len(terms) - 1):
-        new = checkOp(terms[i], terms[i-1], terms[i+1])
-        
+    for i in range(len(terms)):
+        try:
+            new = checkOp(terms[i], terms[i-1], terms[i+1])
+            if "x" in terms[i]:
+                if terms[i] == "x":
+                    print("Just x")
+                elif "x" in terms[i]:
+                    print("x is " + terms[i])
+        except Exception as e:
+            print(e)
+            
     return new
 
 def multipleOps(terms):
-    new = None  # Initialize new to None
-    for i in range(1, len(terms) - 1):
-        result = checkOp(terms[i], terms[i-1], terms[i+1])
-        if result is not None:
-            if new is None:
-                new = str(result)  # Convert result to string
-            else:
-                new = str(new)  # Convert new to string
-                new = checkOp(terms[i], new, terms[i+1])  # Chain operations
+    new = None
+    print(terms)
+    for i in range(len(terms)):
+        try:
+            result = checkOp(terms[i], terms[i-1], terms[i+1])
+            if result is not None:
+                if new is None:
+                    new = str(result)
+                else:
+                    new = str(new)
+                    new = checkOp(terms[i], new, terms[i+1])
+                    
+            if "x" in terms[i]:
+                if terms[i] == "x":
+                    print("Just x")
+                else:
+                    print("x is " + terms[i])
+        except Exception as e:
+            print(e)
     return new
 
 def solve(equation):
